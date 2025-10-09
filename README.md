@@ -5,24 +5,17 @@ Prerequisites:
 To develop locally:
 
 ```
-npm install
-vc dev
+bun install
+bun dev
 ```
 
 ```
 open http://localhost:3000
 ```
 
-To build locally:
-
-```
-npm install
-vc build
-```
-
 To deploy:
 
 ```
-npm install
-vc deploy
+bun install
+vc --prod
 ```
