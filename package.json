@@ -5,6 +5,7 @@
     "dev": "bun run src/index.ts"
   },
   "dependencies": {
+    "@google/genai": "^1.23.0",
     "hono": "^4.9.10"
   },
   "devDependencies": {
