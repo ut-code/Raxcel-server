@@ -6,7 +6,8 @@
   },
   "dependencies": {
     "@google/genai": "^1.23.0",
-    "hono": "^4.9.10"
+    "hono": "^4.9.10",
+    "zod": "^4.1.12"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",

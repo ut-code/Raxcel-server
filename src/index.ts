@@ -1,5 +1,6 @@
 import { Hono } from "hono";
 import { GoogleGenAI } from "@google/genai";
+import * as z from "zod";
 
 const app = new Hono();
 
@@ -8,13 +9,21 @@ const welcomeStrings = [
   "To learn more about Hono on Vercel, visit https://vercel.com/docs/frameworks/backend/hono",
 ];
 
+const userMessage = z.object({
+  message: z.string(),
+});
+
 app
   .get("/", (c) => {
     return c.text(welcomeStrings.join("\n\n"));
   })
   .post("/messages", async (c) => {
     const body = await c.req.json();
-    const message = body.message;
+    const result = userMessage.safeParse(body);
+    if (!result.success) {
+      return c.json({ error: "Invalid input" }, 400);
+    }
+    const message = result.data.message;
 
     if (!message) {
       return c.json({ error: "Message is required" }, 400);
